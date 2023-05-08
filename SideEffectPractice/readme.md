@@ -19,6 +19,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 - 2: ResumeableIpsum  
   LaunchedEffect를 사용해 lorem ipsum을 출력하고, 다른 페이지로 넘어가서 출력을 중단했다면 DisposableEffect로 중단 지점을 내보냅니다.
   추가 인수를 사용해 중단 지점부터 시작할 수 있습니다.
+  DisposableEffect는 LaunchedEffect와 다르게 coroutine이 아니어서 delay를 못 썼습니다.
 
 - 3: ModifiableIpsum  
   LaunchedEffect를 사용해 lorem ipsum을 출력하고, 따로 추가한 버튼을 누르면 글자 색이 무작위로 변경됩니다.
@@ -43,4 +44,4 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
   기능이 너무 복잡해서 이해를 못 했습니다.
 
 - snapshotFlow  
-  snapshot이 뭔가요?
+  flow가 뭔지 몰라서, 그리고 flow를 써야 하는 기능을 아직 안 써서 안 썼습니다.
