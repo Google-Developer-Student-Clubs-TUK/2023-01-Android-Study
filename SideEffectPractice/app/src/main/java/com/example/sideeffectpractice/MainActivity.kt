@@ -47,8 +47,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             var page by remember {
                 mutableStateOf(0)
-            };
-            val pageCount = 6;
+            }
+            val pageCount = 6
 
             var ai by remember { mutableStateOf(0) }
             var someColor by remember { mutableStateOf(Color.Black) }
@@ -64,7 +64,7 @@ class MainActivity : ComponentActivity() {
                     2 -> {
                         ResumeableIpsum(lorem = loremIpsum, abort = { index ->
                             ai = index
-                        }, index = ai);
+                        }, index = ai)
                     }
                     3 -> {
                         Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.Top) {
@@ -75,7 +75,7 @@ class MainActivity : ComponentActivity() {
                         }
                     }
                     4 -> {
-                        DelayedIpsumbutRedWith('e', lorem = loremIpsum);
+                        DelayedIpsumbutRedWith('e', lorem = loremIpsum)
                     }
                     5 -> {
                         DelayedIpsumWithButtons(lorem = loremIpsum)
@@ -84,9 +84,9 @@ class MainActivity : ComponentActivity() {
 
                 Box (modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.BottomCenter) {
                     Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                        LeftButton( { page-- }, enabled = page > 0);
+                        LeftButton( { page-- }, enabled = page > 0)
                         FrameCounter()
-                        RightButton( {page++ }, enabled = page < pageCount - 1);
+                        RightButton( {page++ }, enabled = page < pageCount - 1)
                     }
                 }
             }
@@ -95,21 +95,21 @@ class MainActivity : ComponentActivity() {
 }
 @Composable
 fun SamplePage() {
-    Text("hello, world!");
+    Text("hello, world!")
 }
 
 @Composable
 fun DelayedIpsum(lorem: String) {
     var text by remember { mutableStateOf("") }
-    Text(text);
+    Text(text)
 
     LaunchedEffect(Unit) {
-        val list = lorem.split(' ');
+        val list = lorem.split(' ')
 
         for (word in list) {
-            text += word;
+            text += word
             delay(500)
-            text += " ";
+            text += " "
         }
     }
 }
@@ -117,27 +117,27 @@ fun DelayedIpsum(lorem: String) {
 fun ResumeableIpsum(lorem: String, abort: (Int) -> Unit, index: Int = 0) {
     var text by remember { mutableStateOf("") }
     var process by remember { mutableStateOf(0) }
-    Text(text);
+    Text(text)
 
     LaunchedEffect(Unit) {
-        val list = lorem.split(' ');
+        val list = lorem.split(' ')
 
         for (i in 0 until index) {
-            text += list[i];
-            text += " ";
+            text += list[i]
+            text += " "
         }
         for (i in index until list.count()) {
-            process = i;
+            process = i
 
-            text += list[i];
+            text += list[i]
             delay(500)
-            text += " ";
+            text += " "
         }
     }
 
     DisposableEffect(Unit) {
         onDispose {
-            abort(process);
+            abort(process)
         }
     }
 
@@ -147,15 +147,15 @@ fun ResumeableIpsum(lorem: String, abort: (Int) -> Unit, index: Int = 0) {
 fun ModifiableIpsum(lorem: String, color: Color = Color.Black) {
     val updatedModifier by rememberUpdatedState(color)
     var text by remember { mutableStateOf("") }
-    Text(text, color = color);
+    Text(text, color = color)
 
     LaunchedEffect(Unit) {
-        val list = lorem.split(' ');
+        val list = lorem.split(' ')
 
         for (word in list) {
-            text += word;
+            text += word
             delay(500)
-            text += " ";
+            text += " "
         }
     }
 }
@@ -168,16 +168,16 @@ fun DelayedIpsumbutRedWith(e: Char, lorem: String) {
     val isRed by remember {
         derivedStateOf { wordNow.startsWith(e) }
     }
-    Text(text, color = if (isRed) Color.Red else Color.Black);
+    Text(text, color = if (isRed) Color.Red else Color.Black)
 
     LaunchedEffect(Unit) {
-        val list = lorem.split(' ');
+        val list = lorem.split(' ')
 
         for (word in list) {
-            wordNow = word;
-            text += word;
+            wordNow = word
+            text += word
             delay(500)
-            text += " ";
+            text += " "
         }
     }
 }
@@ -185,25 +185,25 @@ fun DelayedIpsumbutRedWith(e: Char, lorem: String) {
 @Composable
 fun DelayedIpsumWithButtons(lorem: String) {
     var text by remember { mutableStateOf("") }
-    var coroutine = rememberCoroutineScope();
+    var coroutine = rememberCoroutineScope()
 
     var stopButtonPressed by remember { mutableStateOf(false) }
     var startButtonPressed by remember { mutableStateOf(false) }
     Column(Modifier.fillMaxSize()) {
-        Text(text);
+        Text(text)
         Row(Modifier.fillMaxWidth()) {
-            Button(onClick = {coroutine.cancel(); stopButtonPressed = true;},
+            Button(onClick = {coroutine.cancel(); stopButtonPressed = true},
                 enabled = startButtonPressed && !stopButtonPressed) {
                 Icon(Icons.Default.Clear, contentDescription = null)
             }
             Button(onClick = {coroutine.launch {
-                startButtonPressed = true;
-                val list = lorem.split(' ');
+                startButtonPressed = true
+                val list = lorem.split(' ')
 
                 for (word in list) {
-                    text += word;
+                    text += word
                     delay(500)
-                    text += " ";
+                    text += " "
                 }
             }}, enabled = !startButtonPressed) {
                 Icon(Icons.Default.Add, contentDescription = null)
@@ -213,8 +213,8 @@ fun DelayedIpsumWithButtons(lorem: String) {
 }
 @Composable
 fun FrameCounter() {
-    var recompositions by remember { mutableStateOf(0) };
-    Text("recompositions: $recompositions");
+    var recompositions by remember { mutableStateOf(0) }
+    Text("recompositions: $recompositions")
 
     SideEffect {
     }
