@@ -168,7 +168,6 @@ fun DelayedIpsumbutRedWith(e: Char, lorem: String) {
     val isRed by remember {
         derivedStateOf { wordNow.startsWith(e) }
     }
-    Log.d("hyuckkim", isRed.toString());
     Text(text, color = if (isRed) Color.Red else Color.Black);
 
     LaunchedEffect(Unit) {
@@ -218,8 +217,6 @@ fun FrameCounter() {
     Text("recompositions: $recompositions");
 
     SideEffect {
-        recompositions += 1;
-        Log.d("hyuckkim", recompositions.toString())
     }
 }
 
