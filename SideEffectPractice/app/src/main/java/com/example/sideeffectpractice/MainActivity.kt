@@ -1,7 +1,6 @@
 package com.example.sideeffectpractice
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Arrangement
@@ -15,7 +14,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Clear
-import androidx.compose.material.icons.filled.Send
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -147,7 +145,7 @@ fun ResumeableIpsum(lorem: String, abort: (Int) -> Unit, index: Int = 0) {
 fun ModifiableIpsum(lorem: String, color: Color = Color.Black) {
     val updatedModifier by rememberUpdatedState(color)
     var text by remember { mutableStateOf("") }
-    Text(text, color = color)
+    Text(text, color = updatedModifier)
 
     LaunchedEffect(Unit) {
         val list = lorem.split(' ')
@@ -185,7 +183,7 @@ fun DelayedIpsumbutRedWith(e: Char, lorem: String) {
 @Composable
 fun DelayedIpsumWithButtons(lorem: String) {
     var text by remember { mutableStateOf("") }
-    var coroutine = rememberCoroutineScope()
+    val coroutine = rememberCoroutineScope()
 
     var stopButtonPressed by remember { mutableStateOf(false) }
     var startButtonPressed by remember { mutableStateOf(false) }
@@ -217,6 +215,7 @@ fun FrameCounter() {
     Text("recompositions: $recompositions")
 
     SideEffect {
+        recompositions++
     }
 }
 
