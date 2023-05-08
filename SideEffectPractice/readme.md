@@ -45,3 +45,29 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 - snapshotFlow  
   flow가 뭔지 몰라서, 그리고 flow를 써야 하는 기능을 아직 안 써서 안 썼습니다.
+
+### 고쳐야 할 것
+- sealed class 아니면 enum 사용하기
+- 클린 아키텍처 찾아보기
+- 너무 많은 중복 코드 없앨 방법 찾아보기
+
+### 스터디 중 배운 내용
+주제를 잘못 만들었다. 바꿔야 될 걸 바꾸는 내용이 아니라, 바꾸지 말아야 할 걸 바꾸지 말아야 하는 내용이다.  
+(예: TextField가 바뀔 때마다 반응하는 대신에...)
+
+AnimatedVisibility(visible = isShowToast) { } 하고 visible을 coroutine에서 바꾸면 된다.
+
+onDispose에는 소멸자를 넣어야 한다.
+
+kotlin의 coroutine은 cancel하면 다시 시작할 수 없다.
+
+produceState에서 값이 바뀌면 coroutine cancel이 됨. 무한 반복도 멈춘다.
+
+> composable 뒤에서는 잘 실행이 될 건데~  
+rememberUpdatedState는 coroutine에서 쓰는 거네. 이것도 잘못 쓰고 있었네.
+
+The Clean Architecture.
+워터폴? 스크럼? 애자일?  
+아키텍처는: 개발자 대상으로 진행되는 아키텍처. 재사용성. 업무 분할.  
+
+SOLID 원칙.
