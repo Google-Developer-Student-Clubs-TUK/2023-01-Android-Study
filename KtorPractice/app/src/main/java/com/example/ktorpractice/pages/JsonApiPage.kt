@@ -52,16 +52,18 @@ suspend fun getJson(uri: Uri): Beer? {
 }
 
 @Serializable
-data class Beer (
-    var id      : Int?    = null,
-    var uid     : String? = null,
-    var brand   : String? = null,
-    var name    : String? = null,
-    var style   : String? = null,
-    var hop     : String? = null,
-    var yeast   : String? = null,
-    var malts   : String? = null,
-    var ibu     : String? = null,
-    var alcohol : String? = null,
-    var blg     : String? = null
+data class ExampleJson2KtKotlin (
+
+    @SerializedName("id"      ) var id      : Int?    = null,
+    @SerializedName("uid"     ) var uid     : String? = null,
+    @SerializedName("brand"   ) var brand   : String? = null,
+    @SerializedName("name"    ) var name    : String? = null,
+    @SerializedName("style"   ) var style   : String? = null,
+    @SerializedName("hop"     ) var hop     : String? = null,
+    @SerializedName("yeast"   ) var yeast   : String? = null,
+    @SerializedName("malts"   ) var malts   : String? = null,
+    @SerializedName("ibu"     ) var ibu     : String? = null,
+    @SerializedName("alcohol" ) var alcohol : String? = null,
+    @SerializedName("blg"     ) var blg     : String? = null
+
 )
