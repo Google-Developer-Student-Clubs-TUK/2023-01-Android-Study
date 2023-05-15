@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -15,12 +14,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.ktorpractice.KtorClient
 import io.ktor.client.call.body
 import io.ktor.client.request.get
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.SerialName
 
 @Composable
 fun JsonApiPage (api: String) {
@@ -52,18 +51,18 @@ suspend fun getJson(uri: Uri): Beer? {
 }
 
 @Serializable
-data class ExampleJson2KtKotlin (
+data class Beer (
 
-    @SerializedName("id"      ) var id      : Int?    = null,
-    @SerializedName("uid"     ) var uid     : String? = null,
-    @SerializedName("brand"   ) var brand   : String? = null,
-    @SerializedName("name"    ) var name    : String? = null,
-    @SerializedName("style"   ) var style   : String? = null,
-    @SerializedName("hop"     ) var hop     : String? = null,
-    @SerializedName("yeast"   ) var yeast   : String? = null,
-    @SerializedName("malts"   ) var malts   : String? = null,
-    @SerializedName("ibu"     ) var ibu     : String? = null,
-    @SerializedName("alcohol" ) var alcohol : String? = null,
-    @SerializedName("blg"     ) var blg     : String? = null
+    @SerialName("id"      ) var id      : Int?    = null,
+    @SerialName("uid"     ) var uid     : String? = null,
+    @SerialName("brand"   ) var brand   : String? = null,
+    @SerialName("name"    ) var name    : String? = null,
+    @SerialName("style"   ) var style   : String? = null,
+    @SerialName("hop"     ) var hop     : String? = null,
+    @SerialName("yeast"   ) var yeast   : String? = null,
+    @SerialName("malts"   ) var malts   : String? = null,
+    @SerialName("ibu"     ) var ibu     : String? = null,
+    @SerialName("alcohol" ) var alcohol : String? = null,
+    @SerialName("blg"     ) var blg     : String? = null
 
 )
