@@ -44,3 +44,51 @@ AsyncImage 너무 편하다. _이렇게 쉬워도 되는 걸까요?_
 
 반복문 안에 fillMaxSize() 넣으면 안 된다.
 남은 공간에서 값만큼 가져가는 식이라서, 남는 칸이 곱연산이 된다. 요소가 여섯 개라서 fillMaxSize(1f / 6)을 써 놓으니까 0.84 ^ 6 = 0.35만큼의 빈 칸이 생긴다.
+
+### 스터디에서 배운 내용
+맞다 let에서 it있었지
+
+```kotlin
+produceState(0) {
+
+value = lat to lng  // == Pair("A", "B")
+}
+```
+타이머는 produceState로 만드는 것이 좋다.
+
+jetpack glance  
+알파단계임 ㅎㅎ;;
+하지만 생각보다 쉽다고.
+
+Philip Lackner - How to build a home screen widget in Jetpack compose with Glance
+
+Recomposition이 돌아가지 않는다.  
+Thread를 상속받기도 불편하다.
+
+그래서 만들어진 CoroutineScope(Dispatchers.*).lauhch {}  
+- main은 UI에서
+- default는 복잡한 계산에서
+- IO는 네트워크 / 가져오기. 이도 저도 아니니까 IO를 썼던 느낌
+각 작업에 최적화되어 있다.
+
+launch는 일종의 스레드 구분 기능이기도 하다.
+```kotlin
+launch {
+
+}
+launch {
+
+}
+```
+동시에 실행이 되지만 뭐가 먼저 될지는 아무도 모름  
+job.cancel() 하면 멈춘다.
+
+여기는 비동기 처리를 값 바꾸는 걸 감지하고 UI를 다시 로드하는 식으로 하는구나..
+
+mutex, semaphore 
+
+a = async {} 선언: 지금 실행 시작 deffered  
+a.await() 호출: 결과 기다리기  
+js의 그거랑 비슷하긴 하다.
+
+measureTime {} : 시간 측정!
