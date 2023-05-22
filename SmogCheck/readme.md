@@ -92,3 +92,14 @@ a.await() 호출: 결과 기다리기
 js의 그거랑 비슷하긴 하다.
 
 measureTime {} : 시간 측정!
+
+withContext: coroutine을 바꾼다. IO가 안 쓰일 때는 Default로 (예제에서는 decodeStream을 했다.)
+
+params 기능  
+get () {parametersOf("", "")}
+
+context가 참 어렵다.  
+android 개발자는 전부 알고 있지만 대부분이 정확하게는 설명 못함.  
+데이터를 처리해주는 처리체.  
+
+view로 개발할 때는 context가 정말 필요하다.
