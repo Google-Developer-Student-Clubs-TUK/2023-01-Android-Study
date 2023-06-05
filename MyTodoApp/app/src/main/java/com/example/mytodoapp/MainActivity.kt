@@ -39,7 +39,14 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+
+    // Todo: Resume 만들기
+    override fun onResume() {
+        super.onResume()
+
+    }
 }
+
 @Composable
 fun TodoItemColumn() {
     val context = LocalContext.current
@@ -60,7 +67,7 @@ fun TodoItemColumn() {
             })
         }
         items(count = data.size) {
-            TodoRow(index = it, text = data[it], onClick =  {
+            TodoRow(index = it, text = data[it], onClick = {
                 recentlyRemoved = it
             })
         }
@@ -86,6 +93,7 @@ fun TodoItemColumn() {
         }
     }
 }
+
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 fun TodoNewTextRow(onSubmit: (newString: String) -> Unit) {
@@ -104,6 +112,7 @@ fun TodoNewTextRow(onSubmit: (newString: String) -> Unit) {
         }
     }
 }
+
 @Composable
 fun TodoRow(index: Int, text: String, onClick: () -> Unit) {
     Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {

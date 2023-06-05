@@ -30,7 +30,7 @@ import androidx.glance.text.Text
 import androidx.glance.text.TextStyle
 import androidx.glance.unit.ColorProvider
 
-object CounterWidget: GlanceAppWidget() {
+object CounterWidget : GlanceAppWidget() {
     override val sizeMode = SizeMode.Single
     val TODO_LIST_ID = ActionParameters.Key<Int>("todo_list_id")
 
@@ -55,14 +55,15 @@ object CounterWidget: GlanceAppWidget() {
                     .fillMaxSize()
                     .background(Color.LightGray)
             ) {
-                items (count = dataList.size) {
+                items(count = dataList.size) {
                     ContentColumnItem(index = it, text = dataList[it])
                 }
             }
         }
     }
+
     @Composable
-    fun ContentTitle () {
+    fun ContentTitle() {
         Box(
             modifier = GlanceModifier
                 .fillMaxWidth()
@@ -70,7 +71,8 @@ object CounterWidget: GlanceAppWidget() {
         ) {
             Box(
                 modifier = GlanceModifier.fillMaxSize(),
-                contentAlignment = Alignment.CenterStart) {
+                contentAlignment = Alignment.CenterStart
+            ) {
                 Text(
                     text = "My Todo App",
                     style = TextStyle(
@@ -82,15 +84,18 @@ object CounterWidget: GlanceAppWidget() {
             }
             Box(
                 modifier = GlanceModifier.fillMaxSize(),
-                contentAlignment = Alignment.CenterEnd) {
-                Button(text = "Refresh",
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                Button(
+                    text = "Refresh",
                     onClick = actionRunCallback<TodoRefreshActionCallback>()
                 )
             }
         }
     }
+
     @Composable
-    fun ContentColumnItem (index: Int, text: String) {
+    fun ContentColumnItem(index: Int, text: String) {
         Box(
             modifier = GlanceModifier
                 .height(40.dp)
@@ -101,32 +106,38 @@ object CounterWidget: GlanceAppWidget() {
         ) {
             Box(
                 modifier = GlanceModifier.fillMaxSize(),
-                contentAlignment = Alignment.CenterStart) {
-                Text(text,
+                contentAlignment = Alignment.CenterStart
+            ) {
+                Text(
+                    text,
                     style = TextStyle(
                         fontWeight = FontWeight.Medium,
                         color = ColorProvider(Color.Black),
                         fontSize = 16.sp
-                    ))
+                    )
+                )
             }
             Box(
                 modifier = GlanceModifier.fillMaxSize(),
-                contentAlignment = Alignment.CenterEnd) {
+                contentAlignment = Alignment.CenterEnd
+            ) {
                 Button(
                     text = "✓",
                     onClick = actionRunCallback<TodoClearActionCallback>(
                         actionParametersOf(TODO_LIST_ID to index)
-                    ))
+                    )
+                )
             }
         }
     }
 }
 
-class SimpleCounterWidgetReceiver: GlanceAppWidgetReceiver() {
+class SimpleCounterWidgetReceiver : GlanceAppWidgetReceiver() {
     override val glanceAppWidget: GlanceAppWidget
         get() = CounterWidget
 }
-class TodoRefreshActionCallback: ActionCallback {
+
+class TodoRefreshActionCallback : ActionCallback {
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,
@@ -142,7 +153,8 @@ class TodoRefreshActionCallback: ActionCallback {
         }
     }
 }
-class TodoClearActionCallback: ActionCallback {
+
+class TodoClearActionCallback : ActionCallback {
     override suspend fun onAction(
         context: Context,
         glanceId: GlanceId,

@@ -66,3 +66,36 @@ updateAppWidgetState(context, glanceId) {
 ### 총평
 어느 순간부터 구글 앱들의 Widget 퀄리티가 심각하게 떨어졌었는데, 아마 얘 때문인 것 같다.  
 정식 출시되고 보자. 내가 멍청해서 미안.
+
+
+### 오늘 배운 내용 나머지
+mvvm  
+weight는 사랑입니다
+
+companion object에 const val KEY_UID = "uid" 넣고
+```kotlin
+var uid: String? 
+    get() = getString(GET_UID)
+    set() = setString(GET_UID)    
+}
+```
+이런 식으로.
+getter / setter를 이런 곳에서 다시 보게 되니까 반갑다.
+
+solid 원칙
+없으면 취업못함  
+개발에는 정답이 없지만 조금더 나은 코드냐는 있다
+
+LocalStorage는 LocalStorageImpl에서만 상속받나요? 기능 수정하면 LocalStorageImpl2 만들면 되나요? => 칭찬스티커 받음, __야호!__  
+Dependency Injection을 그냥 쓰는게 아니라 Koin나 Hilt으로 쓴다
+
+검색하면 다 나옴. 따라만 하세요.
+
+폴더 관리는 클린 아키텍처를 따라야 하는데.  
+폴더 너무 많아...  
+지금까지 개발하던 건 야매긴 한데......
+
+DataSource를 만들어본 적이 없다.  
+data 관련된 함수 몇 개를 다른 곳에서 관리하는 느낌.  
+MockRepositoryImpl  
+Repository 패턴 vs clean architecture.
